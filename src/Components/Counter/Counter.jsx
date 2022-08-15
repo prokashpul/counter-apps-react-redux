@@ -1,9 +1,18 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { decrement, increment } from "../../Redux/Counter/Actions";
 
 // import { decrement, increment } from "../../Redux/Counter/Actions";
 export default function Counter() {
   const count = useSelector((state) => state.value);
+  const dispatch = useDispatch();
+  const incrementHandler = (value) => {
+    dispatch(increment(value));
+  };
+  const decrementHandler = (value) => {
+    dispatch(decrement(value));
+  };
+
   return (
     <>
       {" "}
@@ -16,13 +25,13 @@ export default function Counter() {
           <div className="flex gap-5 justify-center mt-5">
             <button
               className="px-5 py-3 bg-violet-600 text-white font-samibold cursor-pointer rounded"
-              // onClick={increment}
+              onClick={(value) => incrementHandler(4)}
             >
               Increment
             </button>
             <button
               className="px-5 py-3 bg-red-500 text-white font-samibold cursor-pointer rounded"
-              // onClick={decrement}
+              onClick={(value) => decrementHandler(2)}
             >
               Decrement
             </button>
