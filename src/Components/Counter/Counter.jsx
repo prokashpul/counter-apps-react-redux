@@ -1,6 +1,7 @@
 import React from "react";
-
-export default function Counter() {
+import { connect } from "react-redux";
+import { decrement, increment } from "../../Redux/Counter/Actions";
+function Counter({ count, increment, decrement }) {
   return (
     <>
       {" "}
@@ -8,18 +9,18 @@ export default function Counter() {
       <section id="counterId">
         <div className="shadow-2xl rounded-lg p-5 my-5">
           <div className="font-bold text-3xl" id="count">
-            0
+            {count}
           </div>
           <div className="flex gap-5 justify-center mt-5">
             <button
               className="px-5 py-3 bg-violet-600 text-white font-samibold cursor-pointer rounded"
-              id="increment"
+              onClick={increment}
             >
               Increment
             </button>
             <button
               className="px-5 py-3 bg-red-500 text-white font-samibold cursor-pointer rounded"
-              id="decrement"
+              onClick={decrement}
             >
               Decrement
             </button>
@@ -29,3 +30,16 @@ export default function Counter() {
     </>
   );
 }
+const mapStateToProps = (state) => {
+  return {
+    count: state.value,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    increment: (value) => dispatch(increment(value)),
+    decrement: (value) => dispatch(decrement(value)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Counter);
