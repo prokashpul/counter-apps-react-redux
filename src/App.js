@@ -1,24 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
+import Counter from "./Components/Counter/Counter";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <>
+      {/* header area */}
+      <header className="text-center text-3xl md:text-5xl text-violet-600 font-bold my-10 mx-5">
+        Multi Counter Application
       </header>
-    </div>
+      {/* main area */}
+      <main className="md:max-w-[620px] mx-auto p-5 text-center">
+        <Counter />
+      </main>
+    </>
   );
 }
 
